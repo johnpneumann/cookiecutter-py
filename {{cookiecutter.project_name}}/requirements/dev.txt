@@ -1,0 +1,16 @@
+# {{ cookiecutter.project_name }} dev requirements
+
+# include docs
+-r docs.txt
+
+# include testing
+-r testing.txt
+
+# better python interpreter
+ipython
+
+# better repl
+ipdb
+
+# enable nice docstrings in ipython
+docrepr

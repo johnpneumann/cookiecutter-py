@@ -1,0 +1,13 @@
+# {{ cookiecutter.project_name }} testing requirements
+
+# testing runner
+tox
+
+# unit tests
+pytest
+
+# coverage
+pytest-cov
+
+# mock
+mock

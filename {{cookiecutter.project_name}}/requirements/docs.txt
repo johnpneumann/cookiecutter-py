@@ -1,0 +1,7 @@
+# {{ cookiecutter.project_name }} docs requirements
+
+# sphinx for docs
+Sphinx
+
+# theme
+sphinx-rtd-theme

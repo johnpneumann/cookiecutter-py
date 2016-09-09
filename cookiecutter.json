@@ -1,0 +1,9 @@
+{
+  "author_name": "johnpneumann",
+  "project_owner": "Org Name",
+  "project_name": "Python Project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+  "project_description": "A short description about the project",
+  "python_version": "2.7.11",
+  "version": "0.1.0"
+}

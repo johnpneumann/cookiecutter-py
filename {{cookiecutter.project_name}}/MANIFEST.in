@@ -1,0 +1,22 @@
+include README.md
+include CHANGES.md
+include CONTRIBUTORS.md
+include Makefile
+include .coveragerc
+include .pylintrc
+
+exclude .python-version
+exclude .editorconfig
+exclude .github
+exclude requirements
+exclude requirements.txt
+
+prune docs/_build
+prune docs/_themes
+
+recursive-include tests *
+recursive-include docs *
+
+recursive-exclude *.pyc *.pyo .DS_Store
+recursive-exclude .github *
+recursive-exclude requirements *.txt
