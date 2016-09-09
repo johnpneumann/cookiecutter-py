@@ -1,6 +1,6 @@
-include README.md
-include CHANGES.md
-include CONTRIBUTORS.md
+include README.rst
+include CHANGES.rst
+include CONTRIBUTORS.rst
 include Makefile
 include .coveragerc
 include .pylintrc
