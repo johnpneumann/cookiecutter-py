@@ -41,7 +41,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            '{{ cookiecutter.project_slug }} = {{ cookiecutter.project_slug }}.scripts:cli'
+            '{{ cookiecutter.project_slug }} = {{ cookiecutter.project_slug }}.cmds.cli:cli'
         ]
     }
 )
