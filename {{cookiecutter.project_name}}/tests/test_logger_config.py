@@ -32,7 +32,7 @@ def test_logger_config_not_none(mock_makedirs, monkeypatch):
     monkeypatch.setattr(os.path, 'expanduser', lambda x: '/tmp')
     mock_makedirs.return_value = True
     cfg = logger_config.get_logging_config()
-    expected_logdir = '/tmp/pylogs/dopeproject'
+    expected_logdir = '/tmp/pylogs/{{ cookiecutter.project_slug }}'
     mock_makedirs.assert_called_with(expected_logdir)
     assert isinstance(cfg, dict)
 

@@ -34,7 +34,7 @@ def clirunner():
 
 def test_cli_version(clirunner):
     """Ensure that the cli version is called correctly."""
-    result = clirunner.invoke(cli.dopeproject, ['--version'])
+    result = clirunner.invoke(cli.{{ cookiecutter.project_slug }}, ['--version'])
     assert result.exception is None
     assert 0 == result.exit_code
-    assert 'dopeproject, version {0}\n'.format(version) == result.output
+    assert '{{ cookiecutter.project_slug }}, version {0}\n'.format(version) == result.output
