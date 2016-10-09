@@ -1,6 +1,6 @@
-===============================
+{% for n in range(cookiecutter.project_name|length) %}={% endfor %}
 {{ cookiecutter.project_name }}
-===============================
+{% for n in range(cookiecutter.project_name|length) %}={% endfor %}
 
 {{ cookiecutter.project_description }}
 

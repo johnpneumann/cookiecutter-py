@@ -6,7 +6,7 @@
    contain the root `toctree` directive.
 
 Welcome to {{ cookiecutter.project_name}}
-=====================
+==========={% for n in range(cookiecutter.project_name|length) %}={% endfor %}
 
 Welcome to the {{ cookiecutter.project_name }} documentation. The documentation is
 divided into different sections so you can get what you need easily.

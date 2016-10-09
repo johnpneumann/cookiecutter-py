@@ -33,15 +33,19 @@ setup(
     setup_requires=[
         'pytest-runner',
     ],
-    install_requires=[],
+    install_requires=[
+    {% if cookiecutter.command_line_interface|lower != 'no' %}'Click',{% endif %}
+    ],
     tests_require=[
         'mock',
         'pytest',
         'pytest-cov',
     ],
     entry_points={
+    {% if cookiecutter.command_line_interface|lower != 'no' %}
         'console_scripts': [
-            '{{ cookiecutter.project_slug }} = {{ cookiecutter.project_slug }}.cmds.cli:{{ cookiecutter.project_slug }}'
+            '{{ cookiecutter.project_cli_command }} = {{ cookiecutter.project_slug }}.cmds.cli:{{ cookiecutter.project_slug }}'
         ]
+    {% endif %}
     }
 )

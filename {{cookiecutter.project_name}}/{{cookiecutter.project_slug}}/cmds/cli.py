@@ -4,14 +4,23 @@
     cmds.cli
     ~~~~~~~~
 
-    Command line interface for use with {{cookiecutter.project_slug}}.
+    Command line interface for use with {{ cookiecutter.project_slug }}.
 
-    :copyright: (c) 2016 by {{ cookiecutter.project_owner }}.
+    :copyright: (c) {{ cookiecutter.copyright_year }} by {% if cookiecutter.project_owner == "" %}{{ cookiecutter.author_name }}{% else %}{{ cookiecutter.project_owner }}{% endif %}.
+    {% if cookiecutter.open_source_license == 'MIT license' -%}
+    :license: MIT, see LICENSE for more details.
+    {% elif cookiecutter.open_source_license == 'BSD license' -%}
     :license: BSD, see LICENSE for more details.
+    {% elif cookiecutter.open_source_license == 'ISC license' -%}
+    :license: ISC, see LICENSE for more details.
+    {% elif cookiecutter.open_source_license == 'Apache Software License 2.0' -%}
+    :license: Apache Software License, see LICENSE for more details.
+    {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
+    :license: GPLv3, see LICENSE for more details.
+    {% endif -%}
 """
 from __future__ import absolute_import
 
-import sys
 import logging
 
 import click
@@ -24,14 +33,14 @@ LOGGER = logging.getLogger(__name__)
 
 @click.group()
 @click.version_option(version, help="Print the version number and exit.")
-def {{cookiecutter.project_slug}}():
-    """{{cookiecutter.project_slug}} Cli.
+def {{ cookiecutter.project_slug }}():
+    """{{ cookiecutter.project_name }} CLI.
 
     You can find the logs directory in your home directory under pylogs/{{cookiecutter.project_slug}}.
 
     """
-    pass
+    pass  # pragma: no cover
 
 
 if __name__ == "__main__":
-    {{cookiecutter.project_slug}}()
+    {{ cookiecutter.project_slug }}()

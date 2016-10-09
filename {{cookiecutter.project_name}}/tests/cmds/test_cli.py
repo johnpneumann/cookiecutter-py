@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    {{ cookiecutter.project_slug }}
-    {% for n in range(cookiecutter.project_slug|length) %}~{% endfor %}
-    {{ cookiecutter.project_description }}
+    cmds.test_cli
+    ~~~~~~~~~~~~~
+
+    Runs the unit tests for the CLI.
 
     :copyright: (c) {{ cookiecutter.copyright_year }} by {% if cookiecutter.project_owner == "" %}{{ cookiecutter.author_name }}{% else %}{{ cookiecutter.project_owner }}{% endif %}.
     {% if cookiecutter.open_source_license == 'MIT license' -%}
@@ -17,14 +18,23 @@
     :license: GPLv3, see LICENSE for more details.
     {% endif -%}
 """
-from __future__ import absolute_import
+import pytest
 
-import logging
-import logging.config
+from click import testing
 
-from . import logger_config
+from {{ cookiecutter.project_slug }} import __version__ as version
+from {{ cookiecutter.project_slug }}.cmds import cli
 
 
-__version__ = '{{ cookiecutter.version }}'
-LOGGING_CONFIG = logger_config.get_logging_config()
-logging.config.dictConfig(LOGGING_CONFIG)
+@pytest.fixture
+def clirunner():
+    """CLI runner fixture."""
+    return testing.CliRunner()
+
+
+def test_cli_version(clirunner):
+    """Ensure that the cli version is called correctly."""
+    result = clirunner.invoke(cli.dopeproject, ['--version'])
+    assert result.exception is None
+    assert 0 == result.exit_code
+    assert 'dopeproject, version {0}\n'.format(version) == result.output

@@ -1,16 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-    {{cookiecutter.project_slug}}.logger_config
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    {{ cookiecutter.project_slug }}.logger_config
+    {% for n in range(cookiecutter.project_slug|length) %}~{% endfor %}~~~~~~~~~~~~~~
 
     Handles the logging configuration for the module.
 
-    :copyright: (c) 2016 by {{ cookiecutter.project_owner }}.
+    :copyright: (c) {{ cookiecutter.copyright_year }} by {% if cookiecutter.project_owner == "" %}{{ cookiecutter.author_name }}{% else %}{{ cookiecutter.project_owner }}{% endif %}.
+    {% if cookiecutter.open_source_license == 'MIT license' -%}
+    :license: MIT, see LICENSE for more details.
+    {% elif cookiecutter.open_source_license == 'BSD license' -%}
     :license: BSD, see LICENSE for more details.
+    {% elif cookiecutter.open_source_license == 'ISC license' -%}
+    :license: ISC, see LICENSE for more details.
+    {% elif cookiecutter.open_source_license == 'Apache Software License 2.0' -%}
+    :license: Apache Software License, see LICENSE for more details.
+    {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
+    :license: GPLv3, see LICENSE for more details.
+    {% endif -%}
 """
 import os
 import sys
-
+import errno
 
 
 def get_logging_config():
@@ -74,4 +84,3 @@ def get_logging_config():
     logging_config['loggers']['root']['handlers'].append('file')
     logging_config['loggers']['{{cookiecutter.project_slug}}']['handlers'].append('file')
     return logging_config
-

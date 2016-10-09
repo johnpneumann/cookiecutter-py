@@ -1,8 +1,17 @@
 .PHONY: clean-pyc clean-build clean-tests clean-log lint checkmanifest docs test
 
+# allows us to spawn a new subshell for each command
+# which fixes "argument list too long" errors when cleaning pyc files
+define NL
+
+
+endef
+
 rwildcard = $(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
-rrmdir = $(foreach dir,$1,$(RM) -r $(dir))
-rrmfile = $(foreach fname,$1,$(RM) $(fname))
+rrmdir = $(foreach dir,$1,$(RM) -r $(dir)$(NL))
+rrmfile = $(foreach fname,$1,$(RM) $(fname)$(NL))
+
+pypi_url = {{ cookiecutter.pypi_url }}
 
 ifeq "$(OS)" "Windows_NT"
 	OPEN=start
@@ -34,27 +43,25 @@ help:
 	@echo "release - package and upload a release"
 	@echo "sdist - package"
 
-clean: clean-build clean-tox clean-pyc clean-tests clean-log
+clean: clean-build clean-tests clean-pyc clean-log
 
 clean-build:
 	$(RM) -r $(BUILDDIR)
 	$(RM) -r $(DISTDIR)
 	$(call rrmdir,$(call rwildcard,$(ROOT_DIRECTORY),*.egg-info))
 
+clean-tests:
+	$(RM) -r $(TOXDIR)
+	$(RM) -r $(COVERAGEDIR)
+	$(RM) $(COVERAGEFILE)
+	$(RM) -r $(EGGDIR)
+	$(RM) -r $(CACHEDIR)
+
 clean-pyc:
 	$(call rrmdir,$(call rwildcard,$(ROOT_DIRECTORY),__pycache__))
 	$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.pyc))
 	$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.pyo))
 	$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*~))
-
-clean-tox:
-	$(RM) -r $(TOXDIR)
-
-clean-tests: clean-tox
-	$(RM) -r $(COVERAGEDIR)
-	$(RM) $(COVERAGEFILE)
-	$(RM) -r $(EGGDIR)
-	$(RM) -r $(CACHEDIR)
 
 clean-log:
 	$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.log))
@@ -86,8 +93,8 @@ docs:
 	$(OPEN) docs/_build/html/index.html
 
 release: clean checkmanifest
-	python setup.py sdist upload -r http://pypi.codex.icslan.com
-	python setup.py bdist_wheel upload -r http://pypi.codex.icslan.com
+	python setup.py sdist upload -r $(pypi_url)
+	python setup.py bdist_wheel upload -r $(pypi_url)
 
 sdist: clean checkmanifest
 	python setup.py sdist
