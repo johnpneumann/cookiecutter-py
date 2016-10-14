@@ -78,8 +78,8 @@ def get_logging_config():
         'level': 'WARNING',
         'filename': os.path.join(log_dir, '{{cookiecutter.project_slug}}.log'),
         'class': 'logging.handlers.RotatingFileHandler',
-        'maxBytes': 1024 * 5,
-        'backupCount': 3,
+        'maxBytes': 10 * 1024 * 1024,
+        'backupCount': 5,
         'formatter': 'default',
     }
     logging_config['loggers']['root']['handlers'].append('file')
