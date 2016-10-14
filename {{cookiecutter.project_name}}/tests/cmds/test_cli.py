@@ -17,6 +17,7 @@
     {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
     :license: GPLv3, see LICENSE for more details.
     {% endif -%}
+
 """
 import pytest
 
@@ -37,4 +38,3 @@ def test_cli_version(clirunner):
     result = clirunner.invoke(cli.{{ cookiecutter.project_slug }}, ['--version'])
     assert result.exception is None
     assert 0 == result.exit_code
-    assert '{{ cookiecutter.project_slug }}, version {0}\n'.format(version) == result.output

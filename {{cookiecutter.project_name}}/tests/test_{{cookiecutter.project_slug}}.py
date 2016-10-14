@@ -17,9 +17,11 @@
     {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
     :license: GPLv3, see LICENSE for more details.
     {% endif -%}
+
 """
 import pytest
 
 
 def test_failure():
+    """Base test that will always fail so remove it."""
     assert True == False

@@ -46,25 +46,29 @@ help:
 clean: clean-build clean-tests clean-pyc clean-log
 
 clean-build:
-	$(RM) -r $(BUILDDIR)
-	$(RM) -r $(DISTDIR)
-	$(call rrmdir,$(call rwildcard,$(ROOT_DIRECTORY),*.egg-info))
+	@echo "Cleaning build directories"
+	@$(RM) -r $(BUILDDIR)
+	@$(RM) -r $(DISTDIR)
+	@$(call rrmdir,$(call rwildcard,$(ROOT_DIRECTORY),*.egg-info))
 
 clean-tests:
-	$(RM) -r $(TOXDIR)
-	$(RM) -r $(COVERAGEDIR)
-	$(RM) $(COVERAGEFILE)
-	$(RM) -r $(EGGDIR)
-	$(RM) -r $(CACHEDIR)
+	@echo "Cleaning testing files and directories"
+	@$(RM) -r $(TOXDIR)
+	@$(RM) -r $(COVERAGEDIR)
+	@$(RM) $(COVERAGEFILE)
+	@$(RM) -r $(EGGDIR)
+	@$(RM) -r $(CACHEDIR)
 
 clean-pyc:
-	$(call rrmdir,$(call rwildcard,$(ROOT_DIRECTORY),__pycache__))
-	$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.pyc))
-	$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.pyo))
-	$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*~))
+	@echo "Cleaning pycache, pyc and pyo files"
+	@$(call rrmdir,$(call rwildcard,$(ROOT_DIRECTORY),__pycache__))
+	@$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.pyc))
+	@$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.pyo))
+	@$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*~))
 
 clean-log:
-	$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.log))
+	@echo "Cleaning log files"
+	@$(call rrmfile,$(call rwildcard,$(ROOT_DIRECTORY),*.log))
 
 lint:
 	flake8 {{ cookiecutter.project_slug }}
@@ -81,7 +85,7 @@ test-all:
 
 coverage:
 	env PYTHONPATH=$(pwd):$(pwd)/tests py.test -vvv --cov --cov-report=term-missing --cov-report=xml --cov-report=html
-	open coverage/html/index.html
+	$(OPEN) coverage/html/index.html
 
 docs:
 	$(RM) -f docs/{{ cookiecutter.project_slug }}.rst

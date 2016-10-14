@@ -17,6 +17,7 @@
     {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
     :license: GPLv3, see LICENSE for more details.
     {% endif -%}
+
 """
 import os
 
