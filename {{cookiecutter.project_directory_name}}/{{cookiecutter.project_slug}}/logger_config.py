@@ -16,12 +16,13 @@
     :license: Apache Software License, see LICENSE for more details.
     {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
     :license: GPLv3, see LICENSE for more details.
-    {% endif -%}
-
+    {% endif %}
 """
+{% if cookiecutter.use_file_logger == 'yes' -%}
 import os
 import sys
 import errno
+{% endif -%}
 
 
 def get_logging_config():
@@ -64,6 +65,7 @@ def get_logging_config():
             },
         },
     }
+    {% if cookiecutter.use_file_logger == 'yes' %}
     log_dir = os.path.join(os.path.expanduser('~'), 'pylogs', '{{cookiecutter.project_slug}}')
     try:
         os.makedirs(log_dir)
@@ -84,4 +86,5 @@ def get_logging_config():
     }
     logging_config['loggers']['root']['handlers'].append('file')
     logging_config['loggers']['{{cookiecutter.project_slug}}']['handlers'].append('file')
+    {% endif -%}
     return logging_config

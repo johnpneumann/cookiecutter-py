@@ -16,10 +16,12 @@
     :license: Apache Software License, see LICENSE for more details.
     {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
     :license: GPLv3, see LICENSE for more details.
-    {% endif -%}
-
+    {% endif %}
 """
+{% if cookiecutter.use_file_logger == 'yes' %}
 import os
+import errno
+{% endif -%}
 
 import pytest
 from mock import patch
@@ -27,6 +29,7 @@ from mock import patch
 from {{ cookiecutter.project_slug }} import logger_config
 
 
+{% if cookiecutter.use_file_logger == 'yes' -%}
 @patch('os.makedirs')
 def test_logger_config_not_none(mock_makedirs, monkeypatch):
     """Ensure that the base call gets a valid logger config."""
@@ -47,3 +50,20 @@ def test_logger_oserror_no_exist(mock_makedirs, mock_isdir, monkeypatch):
     mock_makedirs.side_effect = OSError
     cfg = logger_config.get_logging_config()
     assert isinstance(cfg, dict)
+
+
+@patch('os.path.isdir')
+@patch('os.makedirs')
+def test_logger_oserror_exist(mock_makedirs, mock_isdir, monkeypatch):
+    """Ensure that we still get a dictionary back if we can't make the directory and it doesn't exist."""
+    monkeypatch.setattr(os.path, 'expanduser', lambda x: '/tmp')
+    mock_isdir.return_value = True
+    mock_makedirs.side_effect = OSError(errno.EEXIST)
+    cfg = logger_config.get_logging_config()
+    assert isinstance(cfg, dict)
+{% else -%}
+def test_logger_config_not_none():
+    """Ensure that the base call gets a valid logger config."""
+    cfg = logger_config.get_logging_config()
+    assert isinstance(cfg, dict)
+{% endif -%}

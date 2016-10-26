@@ -15,8 +15,7 @@
     :license: Apache Software License, see LICENSE for more details.
     {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
     :license: GPLv3, see LICENSE for more details.
-    {% endif -%}
-
+    {% endif %}
 """
 from __future__ import absolute_import
 
