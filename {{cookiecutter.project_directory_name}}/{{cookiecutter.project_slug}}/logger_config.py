@@ -6,22 +6,19 @@
     Handles the logging configuration for the module.
 
     :copyright: (c) {{ cookiecutter.copyright_year }} by {% if cookiecutter.project_owner == "" %}{{ cookiecutter.author_name }}{% else %}{{ cookiecutter.project_owner }}{% endif %}.
-    {% if cookiecutter.open_source_license == 'MIT license' -%}
-    :license: MIT, see LICENSE for more details.
-    {% elif cookiecutter.open_source_license == 'BSD license' -%}
-    :license: BSD, see LICENSE for more details.
-    {% elif cookiecutter.open_source_license == 'ISC license' -%}
-    :license: ISC, see LICENSE for more details.
-    {% elif cookiecutter.open_source_license == 'Apache Software License 2.0' -%}
-    :license: Apache Software License, see LICENSE for more details.
-    {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
-    :license: GPLv3, see LICENSE for more details.
-    {% endif %}
+    {%- if cookiecutter.open_source_license == 'Not open source' %}
 """
+    {%- else %}
+    {{ cookiecutter._license_strings[cookiecutter.open_source_license] }}
+"""{% endif %}
 {% if cookiecutter.use_file_logger == 'yes' -%}
 import os
 import sys
 import errno
+
+
+{% else %}
+
 {% endif -%}
 
 
@@ -65,8 +62,7 @@ def get_logging_config():
             },
         },
     }
-    {% if cookiecutter.use_file_logger == 'yes' %}
-    log_dir = os.path.join(os.path.expanduser('~'), 'pylogs', '{{cookiecutter.project_slug}}')
+    {% if cookiecutter.use_file_logger == 'yes' -%}log_dir = os.path.join(os.path.expanduser('~'), 'pylogs', '{{cookiecutter.project_slug}}')
     try:
         os.makedirs(log_dir)
     except OSError as err:
@@ -86,5 +82,10 @@ def get_logging_config():
     }
     logging_config['loggers']['root']['handlers'].append('file')
     logging_config['loggers']['{{cookiecutter.project_slug}}']['handlers'].append('file')
-    {% endif -%}
     return logging_config
+
+
+    {%- else -%}
+    return logging_config
+
+    {%- endif %}

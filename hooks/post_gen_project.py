@@ -18,7 +18,7 @@ PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 
 
 def remove_dir(dirpath):
-    """Removes a directory.
+    """Removes a directory from the specified cookiecutter project directory.
 
     Args:
         dirpath (str): The path to the directory to remove.
@@ -38,7 +38,7 @@ def remove_dir(dirpath):
 
 
 def remove_file(filepath):
-    """Removes a file.
+    """Removes a file from the specified cookiecutter project directory.
 
     Args:
         filepath (str): The path to the file to remove.
@@ -57,13 +57,23 @@ def remove_file(filepath):
     return 0
 
 
-if 'no' in '{{ cookiecutter.command_line_interface|lower }}':
-    if remove_dir(os.path.join('{{ cookiecutter.project_slug }}', 'cmds')):
-        sys.stderr.write('Failed to remove cmds dir.\n')
-    if remove_dir(os.path.join('tests', 'cmds')):
-        sys.stderr.write('Failed to remove tests/cmds dir.\n')
+def cleanup():
+    """Cleanup files and directories based on cookiecutter options."""
+    if 'no' in '{{ cookiecutter.command_line_interface|lower }}':
+        if remove_dir(os.path.join('{{ cookiecutter.project_slug }}', 'cmds')):
+            sys.stderr.write('Failed to remove cmds dir.\n')
+        if remove_dir(os.path.join('tests', 'cmds')):
+            sys.stderr.write('Failed to remove tests/cmds dir.\n')
+
+    if '{{ cookiecutter.open_source_license }}' == 'Not open source':
+        if remove_file('LICENSE'):
+            sys.stderr.write('Failed to remove LICENSE file.\n')
+
+    if '{{ cookiecutter.use_git }}' == 'no':
+        if remove_dir('.git'):
+            sys.stderr.write('Failed to remove .git dir.\n')
+    return
 
 
-if 'Not open source' == '{{ cookiecutter.open_source_license }}':
-    if remove_file('LICENSE'):
-        sys.stderr.write('Failed to remove LICENSE file.\n')
+if __name__ == "__main__":
+    cleanup()
