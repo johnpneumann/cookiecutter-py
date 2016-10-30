@@ -3,6 +3,10 @@
 # testing runner
 tox
 
+# linting
+pylint
+flake8
+
 # unit tests
 pytest
 
