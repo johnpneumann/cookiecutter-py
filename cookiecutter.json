@@ -23,5 +23,6 @@
       "Apache Software License 2.0": ":license: Apache Software License, see LICENSE for more details.",
       "GNU General Public License v3": ":license: GPLv3, see LICENSE for more details.",
       "Not open source": ""
-  }
+  },
+  "_cookiecutter_py_version": "1.0.1"
 }

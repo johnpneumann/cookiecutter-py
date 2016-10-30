@@ -4,6 +4,7 @@ include CONTRIBUTORS.rst
 include Makefile
 include .coveragerc
 include .pylintrc
+{% if cookiecutter.open_source_license != 'Not open source' -%}include LICENSE{% endif %}
 
 exclude .python-version
 exclude .editorconfig

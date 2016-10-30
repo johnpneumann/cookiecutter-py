@@ -65,7 +65,7 @@ above still stand.
 Credits
 -------
 
-This package was created with Cookiecutter_ and the `johnpneumann/cookiecutter-py`_ project template.
+This package was created with Cookiecutter_ and the `johnpneumann/cookiecutter-py`_ project template version {{ cookiecutter._cookiecutter_py_version }}.
 
 .. links go below here
 .. _Sphinx: http://www.sphinx-doc.org/en/stable/
