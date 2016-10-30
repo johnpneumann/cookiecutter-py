@@ -62,7 +62,10 @@ def get_logging_config():
             },
         },
     }
-    {% if cookiecutter.use_file_logger == 'yes' -%}log_dir = os.path.join(os.path.expanduser('~'), 'pylogs', '{{cookiecutter.project_slug}}')
+    {% if cookiecutter.use_file_logger == 'yes' -%}if os.environ.get('{{cookiecutter.file_logger_env_var_name}}'):
+        log_dir = os.environ['{{cookiecutter.file_logger_env_var_name}}']
+    else:
+        log_dir = os.path.join(os.path.expanduser('~'), 'pylogs', '{{cookiecutter.project_slug}}')
     try:
         os.makedirs(log_dir)
     except OSError as err:

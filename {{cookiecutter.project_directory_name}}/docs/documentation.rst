@@ -1,3 +1,5 @@
+.. _documentation:
+
 Documentation
 =============
 
@@ -22,7 +24,7 @@ Building the API documentation
 To build the documentation for the module, run the following command from the
 top level directory of the repo::
 
-   sphinx-apidoc -f -o docs/api {{ cookiecutter.project_slug }}
+   sphinx-apidoc -e -f -o docs/api {{ cookiecutter.project_slug }}
 
 This will generate the docs for any code that has docstrings in it. From there
 you can follow the same instructions for building the documentation above.

@@ -6,5 +6,4 @@ Resolves # .
 - [ ] Code Review
 
 
-*Note*: No pull requests will be accepted that do not meet
-the above criteria
+*Note*: No pull requests will be accepted that do not meet the above criteria

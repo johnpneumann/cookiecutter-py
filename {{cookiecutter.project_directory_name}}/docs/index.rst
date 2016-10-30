@@ -13,4 +13,14 @@ divided into different sections so you can get what you need easily.
 
 {{ cookiecutter.project_description }}
 
+Getting Started
+---------------
+
+.. toctree::
+   :maxdepth: 4
+
+   setup
+   install
+   usage
+
 .. include:: contents.rst.inc

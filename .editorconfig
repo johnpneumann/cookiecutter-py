@@ -1,7 +1,9 @@
-# http://editorconfig.org
+# EditorConfig: http://EditorConfig.org
 
+# top-most EditorConfig file
 root = true
 
+# Defaults for all filetypes
 [*]
 indent_style = space
 indent_size = 4
@@ -10,23 +12,15 @@ trim_trailing_whitespace = true
 end_of_line = lf
 charset = utf-8
 
-# Set the default line length for python to 119
+# File specific options follow
 [*.py]
 max_line_length = 119
 
-# ReStructuredText files use 3 spaces
 [*.rst]
 indent_size = 3
 
-# Markdown files should not trim whitespace and use two spaces
 [*.md]
-indent_size = 2
 trim_trailing_whitespace = false
 
-# Makefiles always use tabs for indentation
-[Makefile]
-indent_style = tab
-
-# Batch files use tabs for indentation
-[*.bat]
+[{Makefile,*.bat}]
 indent_style = tab

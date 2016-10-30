@@ -34,6 +34,16 @@ def test_logger_config_not_none(mock_makedirs, monkeypatch):
     assert isinstance(cfg, dict)
 
 
+@patch('os.makedirs')
+def test_logger_dir_from_environ(mock_makedirs, monkeypatch):
+    """Ensure that the logger dir attempts to create the directory from the environment variable."""
+    monkeypatch.setenv('{{ cookiecutter.file_logger_env_var_name }}', '/foo/bar/baz')
+    mock_makedirs.return_value = True
+    logger_config.get_logging_config()
+    expected_logdir = '/foo/bar/baz'
+    mock_makedirs.assert_called_with(expected_logdir)
+
+
 @patch('os.path.isdir')
 @patch('os.makedirs')
 def test_logger_oserror_no_exist(mock_makedirs, mock_isdir, monkeypatch):
