@@ -1,12 +1,3 @@
-Getting Started
----------------
-
-.. toctree::
-   :maxdepth: 4
-
-   running
-   usage
-
 Additional Notes
 ----------------
 
@@ -35,9 +26,9 @@ Third Party Libraries
 these pages. If you'd like to read the documentation on those libraries
 feel free to visit the links below:
 {% if cookiecutter.command_line_interface|lower == 'click' %}
-- `Click Documentation`_
+- Click_
 
-.. _`Click Documentation`: http://click.pocoo.org/6/
+.. _Click: http://click.pocoo.org/6/
 {%- else %}
 - `example library Documentation`_
 

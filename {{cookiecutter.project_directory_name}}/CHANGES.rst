@@ -4,7 +4,7 @@
 
 This contains all major version changes.
 
-1.0.0
------
+{{ cookiecutter.version }}
+{% for n in range(cookiecutter.version|length) %}-{% endfor %}
 
-- initial release
+- Initial release

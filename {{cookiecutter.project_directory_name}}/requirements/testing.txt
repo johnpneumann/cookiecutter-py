@@ -1,17 +1,18 @@
 # {{ cookiecutter.project_name }} testing requirements
 
-# testing runner
+# runner
 tox
-
-# linting
-pylint
-flake8
 
 # unit tests
 pytest
 
-# coverage
+# linting and coverage
 pytest-cov
+pylint
+flake8
 
-# mock
+# mockiing
 mock
+
+# include release requirements
+-r release.txt
