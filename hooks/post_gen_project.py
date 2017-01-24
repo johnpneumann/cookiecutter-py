@@ -193,12 +193,9 @@ def cleanup():
             sys.stderr.write('Failed to remove LICENSE file.\n')
 
     if '{{ cookiecutter.use_git }}' == 'yes':
-        if rename_path(os.path.join(PROJECT_DIRECTORY, 'git'), os.path.join(PROJECT_DIRECTORY, '.git')):
-            sys.stderr.write('Failed to rename git to .git.\n')
-        else:
-            git_cmd = ['git', 'init', PROJECT_DIRECTORY]
-            if subprocess.call(git_cmd):
-                sys.stderr.write('Failed to initialize git repository.\n')
+        git_cmd = ['git', 'init', PROJECT_DIRECTORY]
+        if subprocess.call(git_cmd):
+            sys.stderr.write('Failed to initialize git repository.\n')
     return
 
 
