@@ -24,7 +24,7 @@ To clean up the build, run ``make clean``
 
 Documentation
 -------------
-To generate documentation, you'll need to install Sphinx_ and sphinx_rtd_theme_,
+To generate documentation, you'll need to install Sphinx_ and sphinx-rtd-theme_,
 which can be installed using the following command::
 
    pip install -r requirements/docs.txt
