@@ -17,23 +17,27 @@ CACHEDIR = .cache
 {% if cookiecutter.use_pypi == "yes" -%}PYPI_URL = {{ cookiecutter.pypi_url }}{% endif %}
 
 help:
-	@echo "clean - runs clean-build, clean-pyc, clean-tests and clean-log"
-	@echo "clean-build - remove build artifacts"
-	@echo "clean-pyc - remove Python file artifacts"
-	@echo "clean-tests - remove test files"
-	@echo "clean-log - remove log files"
-	@echo "clean-docs - remove generated docs"
-	@echo "api-docs - generate the api documentation files"
-	@echo "docs - generate Sphinx HTML documentation, including API docs"
-	@echo "lint - check style with flake8"
-	@echo "checkmanifest - ensure the MANIFEST.in file is up to date"
-	@echo "test - run tests quickly with the default Python"
-	@echo "test-all - run tests on every Python version with tox"
-	@echo "cover - check code coverage quickly with the default Python"
-	@echo "sdist - build an sdist package"
-	@echo "bdist - build a bdist_wheel package"
-	@echo "build - build the sdist and bdist_wheel packages"
-	{% if cookiecutter.use_pypi == "yes" -%}@echo "release - package and upload a release"{% endif %}
+	@echo "Management commands for {{ cookiecutter.project_name }}"
+	@echo
+	@echo "Usage:"
+	@echo "\tmake clean:          runs clean-build, clean-pyc, clean-tests and clean-log"
+	@echo "\tmake clean-build:    remove build artifacts"
+	@echo "\tmake clean-pyc:      remove Python file artifacts"
+	@echo "\tmake clean-tests:    remove test files"
+	@echo "\tmake clean-log:      remove log files"
+	@echo "\tmake clean-docs:     remove generated docs"
+	@echo "\tmake api-docs:       generate the api documentation files"
+	@echo "\tmake docs:           generate Sphinx HTML documentation, including API docs"
+	@echo "\tmake lint:           check style with flake8"
+	@echo "\tmake checkmanifest:  ensure the MANIFEST.in file is up to date"
+	@echo "\tmake test:           run tests quickly with the default Python"
+	@echo "\tmake test-all:       run tests on every Python version with tox"
+	@echo "\tmake cover:          check code coverage quickly with the default Python"
+	@echo "\tmake sdist:          build an sdist package"
+	@echo "\tmake bdist:          build a bdist_wheel package"
+	@echo "\tmake build:          build the sdist and bdist_wheel packages"
+	{% if cookiecutter.use_pypi == "yes" -%}@echo "\tmake release:        package and upload a release"{% endif %}
+	@echo
 
 clean: clean-build clean-tests clean-pyc clean-log clean-docs
 

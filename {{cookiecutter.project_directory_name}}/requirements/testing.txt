@@ -11,7 +11,7 @@ pytest-cov
 pylint
 flake8
 
-# mockiing
+# mocking
 mock
 
 # include release requirements

@@ -12,7 +12,7 @@ Building the documentation
 ==========================
 
 To build the documentation, you'll need to have ``{{ cookiecutter.project_slug }}``, ``sphinx`` and the
-``sphinx-rtd-theme`` installed (via virtualenv or otherwise). Once you have that
+``sphinx_rtd_theme`` installed (via virtualenv or otherwise). Once you have that
 done, simply cd into the *docs* directory and run::
 
    make html
