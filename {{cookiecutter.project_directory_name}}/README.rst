@@ -7,7 +7,7 @@
 .. contents:: Table of Contents
 
 Developing
-----------
+==========
 Adherence to code quality and current form is strictly enforced, however,
 contributions are **greatly** appreciated. To get started, there is a
 *dev.txt* file within *requirements* that will install everything for
@@ -15,16 +15,16 @@ testing, documentation generation and some extra bits used for daily
 work, such as ``iPython``.
 
 Testing
--------
+=======
 To run the unit tests, install tox and then run ``tox``.
 
 Clean
------
+=====
 To clean up the build, run ``make clean``
 
 Documentation
--------------
-To generate documentation, you'll need to install Sphinx_ and sphinx_rtd_theme_,
+=============
+To generate documentation, you'll need to install Sphinx_ and sphinx-rtd-theme_,
 which can be installed using the following command::
 
    pip install -r requirements/docs.txt
@@ -39,7 +39,7 @@ directory and running ``make html``. The output will be generated into
 the *_build/html* directory.
 
 Sugar
------
+=====
 A ``Makefile`` is provided at the top level of this repo that does various
 bits for you without you needing to do much if anything. To see the commands
 available run ``make`` or ``make help`` and it will output what commands are
@@ -63,7 +63,7 @@ If you wish to build the docs, run tests or check the manifest, the requirements
 above still stand.
 
 Credits
--------
+=======
 
 This package was created with Cookiecutter_ and the `johnpneumann/cookiecutter-py`_ project template version {{ cookiecutter._cookiecutter_py_version }}.
 

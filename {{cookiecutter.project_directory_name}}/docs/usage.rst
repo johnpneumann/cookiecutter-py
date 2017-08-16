@@ -1,7 +1,8 @@
 .. _usage:
 
+*****
 Usage
-=====
+*****
 
 .. ATTENTION::
    If you haven't gone through the :ref:`setup` and :ref:`install`
@@ -13,13 +14,15 @@ Basic usage of {{ cookiecutter.project_name }} can be found below.
 
 {% if cookiecutter.command_line_interface|lower == 'click' %}
 Command Line Calls
-------------------
+==================
+
 .. todo: add information about command line calls
 
 {% endif %}
 
 Environment Variables
----------------------
+=====================
+
 .. todo: add information about useful environment variables here
 
 

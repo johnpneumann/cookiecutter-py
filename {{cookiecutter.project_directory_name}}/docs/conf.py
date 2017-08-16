@@ -26,7 +26,7 @@ import pkg_resources
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '1.3'
+needs_sphinx = '1.6'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -116,7 +116,7 @@ pygments_style = 'sphinx'
 #keep_warnings = False
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = False
+todo_include_todos = True
 
 
 # -- Options for HTML output ----------------------------------------------
@@ -229,14 +229,16 @@ if not os.getenv('READTHEDOCS'):
 
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
-    'papersize': 'a4paper',
+    'papersize': 'letterpaper',
     # The font size ('10pt', '11pt' or '12pt').
     'pointsize': '12pt',
     # Additional stuff for the LaTeX preamble.
-    #'preamble': '',
+    'preamble': '\setcounter{tocdepth}{3}',
     # Latex figure (float) alignment
     #'figure_align': 'htbp',
 }
+
+latex_show_pagerefs = True
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,

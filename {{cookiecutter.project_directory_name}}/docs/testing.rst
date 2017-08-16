@@ -1,5 +1,8 @@
+.. _testing:
+
+*******
 Testing
-=======
+*******
 
 Testing is done via tox_. The only requirement to run the unit tests is...
 tox, so all you need to do is::

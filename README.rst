@@ -1,12 +1,12 @@
 ===============
 cookiecutter py
 ===============
+
 An opinionated cookiecutter template for python projects.
 
-.. contents::
-
 Install
--------
+=======
+
 To install the package you need to install the cookiecutter_ package using::
 
    pip install cookiecutter
@@ -14,6 +14,10 @@ To install the package you need to install the cookiecutter_ package using::
 From there you can run::
 
    cookiecutter <path/to/this/directory>
+
+or::
+
+   cookiecutter https://github.com/johnpneumann/cookiecutter-py
 
 Do not run the above command within this directory as it will create the project
 inside of here. Run the command from whereever it is that you want to have the project
@@ -24,7 +28,8 @@ for you. For more information on the cookiecutter_ package, see the aforemention
 packages documentation
 
 What's Included
----------------
+===============
+
 - basic tox configuration
 - Makefile
 - .editorconfig
@@ -35,7 +40,8 @@ What's Included
 - sane pylint defaults
 
 Credits
--------
+=======
+
 Cookiecutter was created by `Audrey Roy Greenfeld`_.
 
 .. links go below here
