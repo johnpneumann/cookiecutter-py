@@ -1,16 +1,16 @@
+include LICENSE
 include README.rst
-include CHANGES.rst
-include CONTRIBUTORS.rst
+include CHANGES.md
+include CONTRIBUTORS.md
+include CODE_OF_CONDUCT.md
 include Makefile
 include .coveragerc
 include .pylintrc
-{% if cookiecutter.open_source_license != 'Not open source' -%}include LICENSE{% endif %}
 
 exclude .python-version
 exclude .editorconfig
 exclude .github
-exclude requirements
-exclude requirements.txt
+exclude Pipfile
 
 prune docs/_build
 prune docs/_themes

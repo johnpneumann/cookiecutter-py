@@ -1,16 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-    cmds.test_cli
-    ~~~~~~~~~~~~~
-
-    Runs the unit tests for the CLI.
-
-    :copyright: (c) {{ cookiecutter.copyright_year }} by {% if cookiecutter.project_owner == "" %}{{ cookiecutter.author_name }}{% else %}{{ cookiecutter.project_owner }}{% endif %}.
-    {%- if cookiecutter.open_source_license == 'Not open source' %}
-"""
-    {%- else %}
-    {{ cookiecutter._license_strings[cookiecutter.open_source_license] }}
-"""{% endif %}
+"""Unit tests for {{ cookiecutter.project_slug }}.cmds.cli"""
 import pytest
 
 from click import testing

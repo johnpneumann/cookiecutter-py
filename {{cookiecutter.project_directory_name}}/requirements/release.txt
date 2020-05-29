@@ -1,7 +1,0 @@
-# {{ cookiecutter.project_name }} release requirements
-
-# manifest
-check-manifest
-
-# include documentation requirements
--r docs.txt

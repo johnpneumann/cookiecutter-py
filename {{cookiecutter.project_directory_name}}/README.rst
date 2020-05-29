@@ -10,10 +10,22 @@ Developing
 ==========
 
 Adherence to code quality and current form is strictly enforced, however,
-contributions are **greatly** appreciated. To get started, there is a
+contributions are **greatly** appreciated.
+
+@TODO - Document how to get setup with pipenv
+
+To get started, there is a
 *dev.txt* file within *requirements* that will install everything for
 testing, documentation generation and some extra bits used for daily
 work, such as ``iPython``.
+
+{% if cookiecutter.include_code_of_conduct -%}
+Code of Conduct
+===============
+
+Everyone interacting with the {{ cookiecutter.project_name }} project in
+any medium is expected to follow the `Code of Conduct`_.
+{% endif -%}
 
 Testing
 =======
@@ -77,3 +89,4 @@ This package was created with Cookiecutter_ and the `johnpneumann/cookiecutter-p
 .. _sphinx-rtd-theme: http://read-the-docs.readthedocs.io/en/latest/theme.html
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`johnpneumann/cookiecutter-py`: https://github.com/johnpneumann/cookiecutter-py
+.. _`Code of Conduct`: https://github.com/johnpneumann/cookiecutter-py/blob/master/CODE_OF_CONDUCT.md

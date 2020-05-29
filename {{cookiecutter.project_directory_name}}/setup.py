@@ -24,37 +24,42 @@ setup(
     author='{{ cookiecutter.author_name }}',
     description='{{ cookiecutter.project_description }}',
     long_description=open('README.rst', 'rb').read().decode('utf-8'),
-{%- if cookiecutter.open_source_license in license_classifiers %}
-    license="{{ cookiecutter.open_source_license }}",
+{%- if cookiecutter.license in license_classifiers %}
+    license="{{ cookiecutter.license }}",
 {%- endif %}
     dependency_links=[],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
-{%- if cookiecutter.open_source_license in license_classifiers %}
-        '{{ license_classifiers[cookiecutter.open_source_license] }}',
+{%- if cookiecutter.license in license_classifiers %}
+        '{{ license_classifiers[cookiecutter.license] }}',
 {%- endif %}
         'Topic :: Software Development :: Build Tools',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: {{ cookiecutter.python_version }}',
     ],
     packages=find_packages(exclude=['tests', 'tests.*']),
     zip_safe=False,
     platforms='any',
     setup_requires=[
+{%- if cookiecutter.project_type|lower == 'library' %}
         'pytest-runner',
+{%- endif %}
     ],
     install_requires=[
+{%- if cookiecutter.project_type|lower == 'library' %}
 {%- if cookiecutter.command_line_interface|lower == 'click' %}
-        'Click',
+        'click',
+{%- endif %}
 {%- endif %}
     ],
     tests_require=[
-        'mock',
+{%- if cookiecutter.project_type|lower == 'library' %}
         'pytest',
         'pytest-cov',
+{%- endif %}
     ],
     entry_points={
 {%- if cookiecutter.command_line_interface|lower == 'click' %}

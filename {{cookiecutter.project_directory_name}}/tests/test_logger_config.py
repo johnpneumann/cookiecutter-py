@@ -1,16 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-    tests.test_logger_config
-    ~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Tests the logger config.
-
-    :copyright: (c) {{ cookiecutter.copyright_year }} by {% if cookiecutter.project_owner == "" %}{{ cookiecutter.author_name }}{% else %}{{ cookiecutter.project_owner }}{% endif %}.
-    {%- if cookiecutter.open_source_license == 'Not open source' %}
-"""
-    {%- else %}
-    {{ cookiecutter._license_strings[cookiecutter.open_source_license] }}
-"""{% endif %}
+"""Unit tests for {{cookiecutter.project_slug}}.logger_config."""
 {% if cookiecutter.use_file_logger == 'yes' %}
 import os
 import errno

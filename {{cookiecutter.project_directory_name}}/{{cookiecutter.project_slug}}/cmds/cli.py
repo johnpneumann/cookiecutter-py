@@ -1,19 +1,6 @@
 # -*- coding: utf-8 -*-
 # pylint: disable=line-too-long
-"""
-    cmds.cli
-    ~~~~~~~~
-
-    Command line interface for use with {{ cookiecutter.project_slug }}.
-
-    :copyright: (c) {{ cookiecutter.copyright_year }} by {% if cookiecutter.project_owner == "" %}{{ cookiecutter.author_name }}{% else %}{{ cookiecutter.project_owner }}{% endif %}.
-    {%- if cookiecutter.open_source_license == 'Not open source' %}
-"""
-    {%- else %}
-    {{ cookiecutter._license_strings[cookiecutter.open_source_license] }}
-"""{% endif %}
-from __future__ import absolute_import
-
+"""CLI commands for use with {{ cookiecutter.project_slug }}."""
 import logging
 
 import click

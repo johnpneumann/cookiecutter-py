@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sphinx = "*"
+{%- if cookiecutter.command_line_interface|lower == 'click' %}
+click = "*"
+{%- endif %}
+
+[dev-packages]
+tox = "*"
+pytest = "*"
+pytest-cov = "*"
+pylint = "*"
+flake8 = "*"
+pytest-runner = "*"
+check-manifest = "*"
+sphinx-rtd-theme = "*"
+ipython = "*"
+ipdb = "*"
+docrepr = "*"
+
+[requires]
+python_version = "{{ cookiecutter.python_version }}"

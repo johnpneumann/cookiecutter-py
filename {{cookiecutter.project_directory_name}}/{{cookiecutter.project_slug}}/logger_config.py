@@ -1,16 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
-    {{ cookiecutter.project_slug }}.logger_config
-    {% for n in range(cookiecutter.project_slug|length) %}~{% endfor %}~~~~~~~~~~~~~~
+"""Centralized logging configuration for {{ cookiecutter.project_slug }}.
 
-    Handles the logging configuration for the module.
+This handles setting up the logging configuration for the package.
 
-    :copyright: (c) {{ cookiecutter.copyright_year }} by {% if cookiecutter.project_owner == "" %}{{ cookiecutter.author_name }}{% else %}{{ cookiecutter.project_owner }}{% endif %}.
-    {%- if cookiecutter.open_source_license == 'Not open source' %}
 """
-    {%- else %}
-    {{ cookiecutter._license_strings[cookiecutter.open_source_license] }}
-"""{% endif %}
 {% if cookiecutter.use_file_logger == 'yes' -%}
 import os
 import sys
@@ -22,7 +15,7 @@ import errno
 {% endif -%}
 
 
-def get_logging_config():
+def get_logging_config() -> dict:
     """Creates the logging configuration for us with some standard checking.
 
     Returns:

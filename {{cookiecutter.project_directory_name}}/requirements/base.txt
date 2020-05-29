@@ -1,4 +1,0 @@
-# {{ cookiecutter.project_name }} requirements
-{% if cookiecutter.command_line_interface|lower == 'click' %}
-click
-{% endif %}

@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-    hooks.post_gen_project
-    ~~~~~~~~~~~~~~~~~~~~~~
+"""Hooks that run after project generation.
 
-    Post generation hooks to modify the project based on options.
+Runs any validation and/or checks to cleanup data after the project has
+been generated. This can be anything from removing files and folders, to
+checking that things look as expected.
 
-    :copyright: (c) 2016 by John P. Neumann.
-    :license: BSD, see LICENSE for more details.
 """
 import os
 import sys
@@ -21,7 +19,7 @@ from cookiecutter import prompt
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 
 
-def remove_dir(dirpath):
+def remove_dir(dirpath: str) -> int:
     """Removes a directory from the specified cookiecutter project directory.
 
     Args:
@@ -62,7 +60,7 @@ def remove_dir(dirpath):
     return 0
 
 
-def remove_file(filepath):
+def remove_file(filepath: str) -> int:
     """Removes a file from the specified cookiecutter project directory.
 
     Args:
@@ -104,7 +102,7 @@ def remove_file(filepath):
     return 0
 
 
-def rename_path(filepath, newpath):
+def rename_path(filepath: str, newpath: str) -> int:
     """Renames a file or directory in the specified cookiecutter project directory.
 
     Args:
@@ -144,7 +142,7 @@ def rename_path(filepath, newpath):
     return 0
 
 
-def copy_file(filepath, destination):
+def copy_file(filepath: str, destination: str) -> int:
     """Copies a file from one location to another.
 
     Args:
@@ -162,7 +160,7 @@ def copy_file(filepath, destination):
     return 0
 
 
-def copy_dir(filepath, destination):
+def copy_dir(filepath: str, destination: str) -> int:
     """Copies a directory and it's contents from one place to another.
 
     Args:
@@ -180,7 +178,7 @@ def copy_dir(filepath, destination):
     return 0
 
 
-def cleanup():
+def cleanup() -> None:
     """Cleanup files and directories based on cookiecutter options."""
     if 'no' in '{{ cookiecutter.command_line_interface|lower }}':
         if remove_dir(os.path.join(PROJECT_DIRECTORY, '{{ cookiecutter.project_slug }}', 'cmds')):
@@ -188,9 +186,17 @@ def cleanup():
         if remove_dir(os.path.join(PROJECT_DIRECTORY, 'tests', 'cmds')):
             sys.stderr.write('Failed to remove tests/cmds dir.\n')
 
-    if '{{ cookiecutter.open_source_license }}' == 'Not open source':
+    if '{{ cookiecutter.license }}' == 'Proprietary':
         if remove_file(os.path.join(PROJECT_DIRECTORY, 'LICENSE')):
             sys.stderr.write('Failed to remove LICENSE file.\n')
+
+    if 'no' in '{{ cookiecutter.include_code_of_conduct|lower }}':
+        if remove_file(os.path.join(PROJECT_DIRECTORY, 'CODE_OF_CONDUCT.md')):
+            sys.stderr.write('Failed to remove CODE_OF_CONDUCT.md file.\n')
+
+    if 'no' in '{{ cookiecutter.include_contributors|lower }}':
+        if remove_file(os.path.join(PROJECT_DIRECTORY, 'CONTRIBUTORS.md')):
+            sys.stderr.write('Failed to remove CONTRIBUTORS.md file.\n')
 
     if '{{ cookiecutter.use_git }}' == 'yes':
         git_cmd = ['git', 'init', PROJECT_DIRECTORY]

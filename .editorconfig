@@ -6,15 +6,15 @@ root = true
 # Defaults for all filetypes
 [*]
 indent_style = space
-indent_size = 4
+indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
 end_of_line = lf
 charset = utf-8
 
-# File specific options follow
 [*.py]
-max_line_length = 119
+indent_size = 4
+max_line_length=120
 
 [*.rst]
 indent_size = 3
@@ -22,5 +22,8 @@ indent_size = 3
 [*.md]
 trim_trailing_whitespace = false
 
-[{Makefile,*.bat}]
+[{Makefile,**.bat}]
 indent_style = tab
+
+[*.{bat,ps1}]
+end_of_line = crlf
